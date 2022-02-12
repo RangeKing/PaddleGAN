@@ -2,7 +2,7 @@
 
 ## 1.1 原理介绍
 
-  超分是放大和改善图像细节的过程。它通常将低分辨率图像作为输入，将同一图像放大到更高分辨率作为输出。这里我们提供了四种超分辨率模型，即[RealSR](https://openaccess.thecvf.com/content_CVPRW_2020/papers/w31/Ji_Real-World_Super-Resolution_via_Kernel_Estimation_and_Noise_Injection_CVPRW_2020_paper.pdf), [ESRGAN](https://arxiv.org/abs/1809.00219v2), [LESRCNN](https://arxiv.org/abs/2007.04344),[PAN](https://arxiv.org/pdf/2010.01073.pdf).
+  超分是放大和改善图像细节的过程。它通常将低分辨率图像作为输入，将同一图像放大到更高分辨率作为输出。这里我们提供了四种超分辨率模型，即[RealSR](https://openaccess.thecvf.com/content_CVPRW_2020/papers/w31/Ji_Real-World_Super-Resolution_via_Kernel_Estimation_and_Noise_Injection_CVPRW_2020_paper.pdf)，[ESRGAN](https://arxiv.org/abs/1809.00219v2)，[LESRCNN](https://arxiv.org/abs/2007.04344)，[PAN](https://arxiv.org/pdf/2010.01073.pdf)。
   [RealSR](https://openaccess.thecvf.com/content_CVPRW_2020/papers/w31/Ji_Real-World_Super-Resolution_via_Kernel_Estimation_and_Noise_Injection_CVPRW_2020_paper.pdf)通过估计各种模糊内核以及实际噪声分布，为现实世界的图像设计一种新颖的真实图片降采样框架。基于该降采样框架，可以获取与真实世界图像共享同一域的低分辨率图像。RealSR是一个旨在提高感知度的真实世界超分辨率模型。对合成噪声数据和真实世界图像进行的大量实验表明，RealSR模型能够有效降低了噪声并提高了视觉质量。
   [ESRGAN](https://arxiv.org/abs/1809.00219v2)是增强型SRGAN，为了进一步提高SRGAN的视觉质量，ESRGAN在SRGAN的基础上改进了SRGAN的三个关键组件。此外，ESRGAN还引入了未经批量归一化的剩余密集块（RRDB）作为基本的网络构建单元，让鉴别器预测相对真实性而不是绝对值，并利用激活前的特征改善感知损失。得益于这些改进，提出的ESRGAN实现了比SRGAN更好的视觉质量和更逼真、更自然的纹理，并在PIRM2018-SR挑战赛中获得第一名。
   考虑到CNNs在SISR的应用上往往会消耗大量的计算量和存储空间来训练SR模型。轻量级增强SR-CNN（[LESRCNN](https://arxiv.org/abs/2007.04344)）被提出。大量实验表明，LESRCNN在定性和定量评价方面优于现有的SISR算法。
@@ -76,7 +76,7 @@
   将 Corrupted-tr-x.zip 和 Corrupted-tr-y.zip 解压到 ``PaddleGAN/data/ntire20`` 目录下。
 
   运行如下命令:
-  ```
+  ```shell
     python ./data/realsr_preprocess/create_bicubic_dataset.py --dataset df2k --artifacts tdsr
     python ./data/realsr_preprocess/collect_noise.py --dataset df2k --artifacts tdsr
   ```
@@ -86,12 +86,12 @@
   示例以df2k数据集和RealSR模型为例。如果您想使用自己的数据集，可以在配置文件中修改数据集为您自己的数据集。如果您想使用其他模型，可以通过替换配置文件。
 
   训练模型:
-  ```
+  ```shell
      python -u tools/main.py --config-file configs/realsr_bicubic_noise_x4_df2k.yaml
   ```
 
   测试模型:
-  ```
+  ```shell
      python tools/main.py --config-file configs/realsr_bicubic_noise_x4_df2k.yaml --evaluate-only --load ${PATH_OF_WEIGHT}
   ```
 
@@ -120,7 +120,7 @@ paddle模型使用DIV2K数据集训练，torch模型使用df2k和DIV2K数据集�
 | paddle  | 30.4574 / 0.8643 | 26.7204 / 0.7434 |
 | torch  | 30.2183 / 0.8643 | 26.8035 / 0.7445 |
 
-<!-- ![](../../imgs/horse2zebra.png) -->
+
 
 
 ## 1.4 模型下载
@@ -187,7 +187,7 @@ paddle模型使用DIV2K数据集训练，torch模型使用df2k和DIV2K数据集�
   year={2020}
   }
   ```
-  - 5. [Closed-loop Matters: Dual Regression Networks for Single Image Super-Resolution](https://arxiv.org/pdf/2003.07018.pdf)
+- 5. [Closed-loop Matters: Dual Regression Networks for Single Image Super-Resolution](https://arxiv.org/pdf/2003.07018.pdf)
 
   ```
   @inproceedings{guo2020closed,
